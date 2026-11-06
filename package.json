@@ -1,0 +1,24 @@
+{
+  "name": "mcp-v2-minimal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A minimal MCP server that runs on the 2026-07-28 spec / TypeScript SDK v2",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.4.0",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
