@@ -18,6 +18,11 @@ Verified on @modelcontextprotocol/server 2.4.0 · MCP spec 2026-07-28 · Node 20
 Built and smoke-tested on Node 25.8.2 / TypeScript 7.0.2
 ```
 
+**This repo is the minimal cut.** The parts that cost the hours are in a paid kit: Streamable HTTP
+with the `Host`/`Origin` guards, resources and resource templates, an 18-test harness, and the
+cookbook with the full v1 → v2 migration diff.
+**[MCP Starter Kit — $29 →](https://haojm.gumroad.com/l/mcp-starter-kit)**
+
 ## Quick start
 
 ```bash
@@ -126,22 +131,24 @@ Three details that matter more than they look:
 - **Bad arguments return an `isError: true` tool result, not a throw.** That is deliberate: the model
   reads the message and retries. `json_format` in `src/index.ts` shows the pattern.
 
-## What this repo deliberately leaves out
+## What the full kit adds (only if you need it)
 
-This is the free, minimal cut. The full kit adds the parts that take real debugging time:
+This repo is deliberately minimal: one transport, two tools, no HTTP. The kit is for the moment you
+outgrow it.
 
-- a **workbench server** — 4 tools with structured output and annotations, 2 resources, a resource
-  template, and a prompt
-- the same factory served over **Streamable HTTP**, with the `Host` / `Origin` guards that stop DNS
-  rebinding
-- **18 self-verifying tests** — 10 through a real MCP client, 8 over a real TCP socket
-- the **HTTP header contract**: `MCP-Protocol-Version`, `Mcp-Method` and `Mcp-Name` are mandatory and
-  must match the JSON-RPC body, or the handler answers `-32020`
-- a **cookbook**: the full v1 → v2 migration diff, seven failure modes, and a security checklist
-- ready-to-paste configs for VS Code, Cursor, Claude Code and Claude Desktop
-- a **handbook PDF**
+| | This repo | Full kit |
+| --- | --- | --- |
+| stdio transport | ✅ | ✅ |
+| Streamable HTTP + `Host`/`Origin` guards | — | ✅ |
+| Resources + resource templates + prompts | — | ✅ |
+| Structured output / annotations examples | partial | ✅ |
+| Tests | 6 (in memory) | 18 (10 in memory + 8 over a real socket) |
+| v1 → v2 migration diff | summary table | full diff |
+| HTTP header contract (`-32020` debugging) | — | ✅ |
+| Configs: VS Code / Cursor / Claude Code / Claude Desktop | 4 snippets in this README | 4 files |
+| Handbook (PDF, 15 pages) | — | ✅ |
 
-→ **Full kit: https://haojm.gumroad.com/l/mcp-starter-kit**
+→ **https://haojm.gumroad.com/l/mcp-starter-kit**
 
 If this repo saved you an hour, a ⭐ helps someone else find it.
 
